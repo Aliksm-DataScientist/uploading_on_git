@@ -1,4 +1,4 @@
-name: Dummmy CI/CD Pipeline
+name: Dummy CI/CD Pipeline
 
 on:
   push:
@@ -19,8 +19,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Wait Before Linting
+        run: sleep 20
+
       - name: Lint Code
         run: echo "Linting repository... Done!"
+
+      - name: Wait Before Running Tests
+        run: sleep 20
 
       - name: Run Unit Tests
         run: echo "Running unit tests... All tests passed!"
@@ -32,6 +38,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Wait Before Simulating Build and Push
+        run: sleep 20
 
       - name: Simulate Build and Push
         run: |
@@ -45,6 +54,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Wait Before Simulating Deployment
+        run: sleep 20
 
       - name: Simulate Deployment
         run: |
