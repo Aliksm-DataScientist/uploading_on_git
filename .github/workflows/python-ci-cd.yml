@@ -1,0 +1,52 @@
+name: Dummy CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Lint Code
+        run: echo "Linting repository... Done!"
+
+      - name: Run Unit Tests
+        run: echo "Running unit tests... All tests passed!"
+
+  build-and-push-dummy-image:
+    name: Continuous Delivery
+    needs: integration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Simulate Build and Push
+        run: |
+          echo "Building a dummy Docker image... Done!"
+          echo "Pushing the dummy image to a hypothetical registry... Done!"
+
+  continuous-deployment:
+    name: Continuous Deployment
+    needs: build-and-push-dummy-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Simulate Deployment
+        run: |
+          echo "Deploying the dummy application... Done!"
+          echo "Dummy deployment successful!"
