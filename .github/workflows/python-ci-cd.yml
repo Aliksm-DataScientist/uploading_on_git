@@ -1,4 +1,4 @@
-name: Dummy CI/CD Pipeline
+name: Dummmy CI/CD Pipeline
 
 on:
   push:
